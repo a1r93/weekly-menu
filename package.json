@@ -3,15 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev --port 3000",
-    "start": "node .output/server/index.mjs",
     "build": "vite build",
+    "dev": "vite dev --port 3000",
+    "knip": "knip",
+    "lint": "prettier --check --cache . && eslint --cache .",
     "serve": "vite preview",
+    "start": "node .output/server/index.mjs",
     "test": "vitest run",
-    "lint": "eslint",
-    "format": "prettier",
-    "check": "prettier --write . && eslint --fix",
-    "knip": "knip"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

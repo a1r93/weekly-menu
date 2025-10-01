@@ -2,12 +2,14 @@ import { tanstackConfig } from "@tanstack/eslint-config";
 import perfectionist from "eslint-plugin-perfectionist";
 
 export default [
-  ...tanstackConfig,
+  ...tanstackConfig.map((cfg) => ({
+    ...cfg,
+    files: ["**/*.ts", "**/*.tsx"],
+  })),
   customizePerfectionist(perfectionist.configs["recommended-natural"]),
   {
     rules: {
       "@typescript-eslint/array-type": "off",
-      "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
       "import/order": "off",
       "sort-imports": "off",
     },
@@ -32,11 +34,9 @@ function customizePerfectionist(config) {
 
 function customizeRule(config, ruleName, adaptation) {
   const rule = config.rules[ruleName];
-
   if (!rule) {
     throw new Error(`Cannot find rule: '${ruleName}'`);
   }
-
   return {
     [ruleName]: [rule[0], { ...rule[1], ...adaptation }],
   };
