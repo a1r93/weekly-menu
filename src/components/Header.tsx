@@ -1,4 +1,5 @@
-import { Link } from '@tanstack/react-router'
+import { Link } from "@tanstack/react-router";
+import { Button } from "./ui/button";
 
 export default function Header() {
   return (
@@ -16,6 +17,8 @@ export default function Header() {
           <Link to="/demo/start/api-request">Start - API Request</Link>
         </div>
       </nav>
+
+      <Button>Click me</Button>
     </header>
-  )
+  );
 }

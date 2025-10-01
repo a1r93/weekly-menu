@@ -10,16 +10,16 @@
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "check": "prettier --write . && eslint --fix",
+    "knip": "knip"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-devtools": "^0.2.2",
     "@tanstack/react-router": "^1.132.0",
     "@tanstack/react-router-devtools": "^1.132.0",
-    "@tanstack/react-router-ssr-query": "^1.131.7",
     "@tanstack/react-start": "^1.132.0",
-    "@tanstack/router-plugin": "^1.132.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.476.0",
@@ -32,17 +32,17 @@
   },
   "devDependencies": {
     "@tanstack/eslint-config": "^0.3.0",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/react": "^16.2.0",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.36.0",
+    "eslint-plugin-perfectionist": "^4.15.0",
     "jsdom": "^26.0.0",
+    "knip": "^5.64.1",
     "prettier": "^3.5.3",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
-    "vitest": "^3.0.5",
-    "web-vitals": "^4.2.4"
+    "vitest": "^3.0.5"
   }
 }

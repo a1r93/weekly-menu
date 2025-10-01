@@ -1,11 +1,47 @@
 {
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.husky/_": true,
+    "**/dist": true,
+    "**/bundle_stats.html": true,
+    "**/pnpm-lock.yaml": true
+  },
+  "files.insertFinalNewline": true,
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
+  },
   "files.watcherExclude": {
     "**/routeTree.gen.ts": true
   },
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "search.exclude": {
     "**/routeTree.gen.ts": true
   },
-  "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
-  }
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
