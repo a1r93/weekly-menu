@@ -1,4 +1,6 @@
-Welcome to your new TanStack app!
+Weekly Menu
+
+[![🤖 Continuous Integration](https://github.com/a1r93/weekly-menu/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/a1r93/weekly-menu/actions/workflows/continuous-integration.yml)
 
 # Getting Started
 
