@@ -1,0 +1,58 @@
+name: 🤖 Continuous Integration
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  push:
+    branches: ["main"]
+
+jobs:
+  quality:
+    name: ⬣ Linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup pnpm and Node, install dependencies
+        uses: ./.github/composites/setup-pnpm
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: 🔬 Run linters
+        run: pnpm run lint
+
+  typecheck:
+    name: ʦ TypeScript
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup pnpm and Node, install dependencies
+        uses: ./.github/composites/setup-pnpm
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: 🔎 Run Typecheck
+        run: pnpm run typecheck
+
+  unused-dependencies:
+    name: 🔍 Knip
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup pnpm and Node, install dependencies
+        uses: ./.github/composites/setup-pnpm
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: 🔍 Run knip
+        run: pnpm run knip
