@@ -1,7 +1,7 @@
 {
   "$schema": "https://unpkg.com/knip@latest/schema.json",
   "entry": ["src/router.tsx"],
-  "ignoreDependencies": ["tailwindcss", "lucide-react", "tw-animate-css"],
+  "ignoreDependencies": ["tailwindcss", "tw-animate-css"],
   "ignore": ["**/routeTree.gen.ts"],
   "project": ["**/*.{js,ts,tsx}"]
 }

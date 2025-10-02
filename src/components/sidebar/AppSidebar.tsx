@@ -1,172 +1,56 @@
 "use client";
 
-import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { BookOpen, CookingPot } from "lucide-react";
 import * as React from "react";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
   SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { NavMain } from "./NavMain";
-import { NavProjects } from "./NavProjects";
 import { NavUser } from "./NavUser";
-import { TeamSwitcher } from "./TeamSwitcher";
-
-// This is sample data.
-const data = {
-  navMain: [
-    {
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-      title: "Playground",
-      url: "#",
-    },
-    {
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-      title: "Models",
-      url: "#",
-    },
-    {
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-      title: "Documentation",
-      url: "#",
-    },
-    {
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-      title: "Settings",
-      url: "#",
-    },
-  ],
-  projects: [
-    {
-      icon: Frame,
-      name: "Design Engineering",
-      url: "#",
-    },
-    {
-      icon: PieChart,
-      name: "Sales & Marketing",
-      url: "#",
-    },
-    {
-      icon: Map,
-      name: "Travel",
-      url: "#",
-    },
-  ],
-  teams: [
-    {
-      logo: GalleryVerticalEnd,
-      name: "Acme Inc",
-      plan: "Enterprise",
-    },
-    {
-      logo: AudioWaveform,
-      name: "Acme Corp.",
-      plan: "Startup",
-    },
-    {
-      logo: Command,
-      name: "Evil Corp.",
-      plan: "Free",
-    },
-  ],
-  user: {
-    avatar: "/avatars/shadcn.jpg",
-    email: "m@example.com",
-    name: "shadcn",
-  },
-};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild size="lg">
+              <Link to="/">
+                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <CookingPot className="size-4" />
+                </div>
+                <div className="flex flex-col gap-0.5 leading-none">
+                  <span className="font-medium">Weekly Menu</span>
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <SidebarGroup>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild tooltip={"Recipes"}>
+                <Link to="/">
+                  <BookOpen />
+                  <span>Recipes</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

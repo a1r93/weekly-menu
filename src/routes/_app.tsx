@@ -1,4 +1,3 @@
-import { Separator } from "@radix-ui/react-separator";
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import { AppSidebar } from "@/components/sidebar/AppSidebar";
 import {
@@ -9,6 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
@@ -24,7 +24,20 @@ export const Route = createFileRoute("/_app")({
       throw redirect({ to: "/auth/login" });
     }
 
-    return { session };
+    return {
+      session: {
+        ...session,
+        user: {
+          ...session.user,
+          initials: session.user.name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase()
+            .slice(0, 2),
+        },
+      },
+    };
   },
 });
 
