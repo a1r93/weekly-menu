@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useAuth } from "@/contexts/auth";
+import { useAuth } from "@/lib/useAuth";
 import logo from "../logo.svg";
 
 export const Route = createFileRoute("/_app/")({
@@ -17,7 +17,7 @@ function HomePage() {
           className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
           src={logo}
         />
-        <h1>Welcome, {user?.email}!</h1>
+        <h1>Welcome, {user.email}!</h1>
         <p>
           Edit <code>src/routes/index.tsx</code> and save to reload.
         </p>

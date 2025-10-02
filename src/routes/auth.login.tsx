@@ -22,10 +22,10 @@ const signupSchema = z.object({
 });
 
 export const Route = createFileRoute("/auth/login")({
-  component: SignupPage,
+  component: LoginPage,
 });
 
-function SignupPage() {
+function LoginPage() {
   const form = useForm({
     defaultValues: {
       email: "",
