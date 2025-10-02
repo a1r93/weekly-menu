@@ -1,12 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useAuth } from "@/contexts/auth";
 import logo from "../logo.svg";
 
 export const Route = createFileRoute("/_app/")({
-  component: App,
+  component: HomePage,
 });
 
-function App() {
-  const { user } = Route.useRouteContext();
+function HomePage() {
+  const { user } = useAuth();
+
   return (
     <div className="text-center">
       <header className="h-full flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
@@ -15,7 +17,7 @@ function App() {
           className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
           src={logo}
         />
-        <h1>Welcome, {user.email}!</h1>
+        <h1>Welcome, {user?.email}!</h1>
         <p>
           Edit <code>src/routes/index.tsx</code> and save to reload.
         </p>

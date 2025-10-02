@@ -1,4 +1,6 @@
 import { PrismaClient } from "@prisma-app/client";
+import { createServerFn } from "@tanstack/react-start";
+import { getRequestHeaders } from "@tanstack/react-start/server";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { reactStartCookies } from "better-auth/react-start";
@@ -12,10 +14,21 @@ export const auth = betterAuth({
     enabled: true,
   },
   plugins: [reactStartCookies()],
-  // socialProviders: {
-  //   github: {
-  //     clientId: process.env.GITHUB_CLIENT_ID as string,
-  //     clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-  //   },
-  // },
+  session: {
+    cookieCache: { enabled: true, maxAge: 5 * 60 },
+  },
+  socialProviders: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    },
+  },
 });
+
+export const getSessionServerFn = createServerFn({ method: "GET" }).handler(
+  async () => {
+    return await auth.api.getSession({
+      headers: getRequestHeaders(),
+    });
+  },
+);

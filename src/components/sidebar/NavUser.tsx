@@ -1,5 +1,6 @@
 "use client";
 
+import { useNavigate } from "@tanstack/react-router";
 import {
   BadgeCheck,
   Bell,
@@ -24,6 +25,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { authClient } from "@/lib/auth-client";
 
 export function NavUser({
   user,
@@ -34,6 +36,7 @@ export function NavUser({
     name: string;
   };
 }) {
+  const navigate = useNavigate();
   const { isMobile } = useSidebar();
 
   return (
@@ -97,7 +100,17 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                authClient.signOut({
+                  fetchOptions: {
+                    onSuccess: () => {
+                      navigate({ to: "/auth/login" });
+                    },
+                  },
+                });
+              }}
+            >
               <LogOut />
               Log out
             </DropdownMenuItem>
